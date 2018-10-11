@@ -1,5 +1,7 @@
 runtime: python37
 
 handlers:
+- url: /
+  script: home.app
 - url: /play_audio
-  script: main.app
+  script: play_audio.app
