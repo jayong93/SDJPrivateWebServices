@@ -3,4 +3,3 @@ runtime: python37
 handlers:
 - url: /play_audio
   script: main.app
-  upload: templates/*
