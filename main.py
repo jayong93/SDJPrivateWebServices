@@ -18,7 +18,18 @@ def play_audio():
     if app_window is not None:
         app_window.extract()
     new_script = soup.new_tag("script")
-    new_script.string = '$(window).on("load", function(){$("#play").click();});'
+    new_script.string = """$(window).on("load", function(){
+        $("#play").click();
+        var timer_id = setInterval(function() {
+            if ($("#play").attr("style") == "display: none;") {
+                clearInterval(timer_id);
+            }
+            else {
+                $("#play").click();
+            }
+        }, 500);
+    });
+    """
     soup.head.append(new_script)
     print(soup.head)
 
