@@ -9,7 +9,7 @@
         var audio_controller = document.getElementById("controller");
         audio_controller.currentTime = {{time_offset}};
         audio_controller.load();
-        audio_controller.oncanplay = function() {audio_controller.play();};
+        audio_controller.onloadeddata = function() {audio_controller.play();};
     </script>
 </body>
 
