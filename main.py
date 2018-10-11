@@ -14,6 +14,7 @@ def play_audio():
     response = req.get(url, headers=new_header)
 
     soup = BeautifulSoup(response.content, 'html.parser')
+    soup.select_one("#app_install").extract()
     new_script = soup.new_tag("script")
     new_script.string = '$(window).on("load", function(){$("#play").click();});'
     soup.head.append(new_script)
