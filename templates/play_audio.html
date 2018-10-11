@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <audio controls autoplay id="controller">
+            <source src="{{src}}" type="audio/mpeg">
+            not supported
+        </audio>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var audio_controller = document.getElementById("controller");
+                audio_controller.currentTime = {{time_offset}};
+            }, false);
+        </script>
+    </body>
+</html>
