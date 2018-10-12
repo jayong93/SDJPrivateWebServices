@@ -10,7 +10,8 @@ user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebK
 @app.route('/play_podbbang/')
 def play_audio():
     url = request.args.get('url')
-    new_header = {key:val for key,val in request.headers if key != "Host"}
+    new_header = {key:val for key,val in request.headers if key not in ["Host", "User-Agent"]}
+    new_header["User-Agent"] = user_agent
     response = req.get(url, headers=new_header)
 
     soup = BeautifulSoup(response.content, 'html.parser')
@@ -31,7 +32,6 @@ def play_audio():
     });
     """
     soup.head.append(new_script)
-    print(soup.head)
 
     return str(soup)
 
